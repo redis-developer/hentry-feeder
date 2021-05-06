@@ -1,7 +1,14 @@
 package main
 
-import "fmt"
+import (
+	"net/http"
+
+	"github.com/YashKumarVerma/hentry-feeder/internal/server"
+)
 
 func main() {
-	fmt.Println("Hello World")
+	// redis.Init()
+
+	http.HandleFunc("/data", server.FormHandler)
+	http.ListenAndServe(":9898", nil)
 }
