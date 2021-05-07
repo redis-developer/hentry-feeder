@@ -1,4 +1,4 @@
-package server
+package redis
 
 // PostBody represents an incoming request
 type PostBody struct {
