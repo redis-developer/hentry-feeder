@@ -1,16 +1,19 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
-    "fmt"
 
+	"github.com/YashKumarVerma/hentry-feeder/internal/config"
 	"github.com/YashKumarVerma/hentry-feeder/internal/redis"
 	"github.com/YashKumarVerma/hentry-feeder/internal/server"
 )
 
 func main() {
+	config.Init()
 	redis.Init()
-    fmt.Println("Listening on port 9898")
+
+	fmt.Println("Listening on port :" + config.Load.PORT)
 	http.HandleFunc("/data", server.FormHandler)
-	http.ListenAndServe(":9898", nil)
+	http.ListenAndServe(":"+config.Load.PORT, nil)
 }

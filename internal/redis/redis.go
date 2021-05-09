@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	redistimeseries "github.com/RedisTimeSeries/redistimeseries-go"
+	"github.com/YashKumarVerma/hentry-feeder/internal/config"
 	"github.com/YashKumarVerma/hentry-feeder/internal/structure"
 )
 
@@ -11,7 +12,8 @@ var client *redistimeseries.Client
 
 // Init connection with redis timeseries database
 func Init() {
-	client = redistimeseries.NewClient("localhost:6379", "hentry", nil)
+	client = redistimeseries.NewClient(config.Load.RedisURL, "hentry", nil)
+	fmt.Println("redis.connected")
 }
 
 // Save a new entry into timeseries
