@@ -2,6 +2,7 @@ package redis
 
 import (
 	"fmt"
+	"strconv"
 
 	redistimeseries "github.com/RedisTimeSeries/redistimeseries-go"
 	"github.com/YashKumarVerma/hentry-feeder/internal/config"
@@ -26,7 +27,12 @@ func Save(data structure.PostBody) {
 		client.CreateKeyWithOptions(keyname, redistimeseries.DefaultCreateOptions)
 	}
 
-	response, err := client.AddAutoTs(keyname, float64(data.V))
+	parsedFloat, err := strconv.ParseFloat(data.V, 64)
+	if err != nil {
+		fmt.Println("Error converting timestamp to float64")
+		fmt.Println(err)
+	}
+	response, err := client.AddAutoTs(keyname, parsedFloat)
 
 	if err != nil {
 		fmt.Println("Error:", err)

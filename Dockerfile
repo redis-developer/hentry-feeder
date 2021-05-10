@@ -20,4 +20,4 @@ RUN chmod +x hentry-feeder
 CMD ["./hentry-feeder"]
 
 # exporse listening port
-EXPOSE 8000
+EXPOSE 80

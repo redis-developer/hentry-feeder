@@ -17,6 +17,7 @@ func FormHandler(w http.ResponseWriter, r *http.Request) {
 	err := decoder.Decode(&body)
 	if err != nil {
 		fmt.Fprintf(w, "BAD REQUEST")
+		fmt.Println(err)
 	}
 
 	go redis.Save(body)
