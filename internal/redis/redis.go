@@ -18,9 +18,8 @@ func Init() {
 }
 
 // Save a new entry into timeseries
-func Save(data structure.PostBody) {
-
-	var keyname = data.Id
+func Save(prefix string, data structure.PostBody) {
+	var keyname = prefix + ":" + data.Id
 	_, err := client.Info(keyname)
 	if err != nil {
 		fmt.Println("Key " + keyname + " does not exist")
