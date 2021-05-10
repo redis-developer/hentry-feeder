@@ -10,7 +10,7 @@ import (
 )
 
 // FormHandler handles the incoming data
-func FormHandler(w http.ResponseWriter, r *http.Request) {
+func TimeSeriesFormHandler(w http.ResponseWriter, r *http.Request) {
 	decoder := json.NewDecoder(r.Body)
 
 	var body structure.PostBody
@@ -20,6 +20,6 @@ func FormHandler(w http.ResponseWriter, r *http.Request) {
 		fmt.Println(err)
 	}
 
-	go redis.Save(body)
+    go redis.Save("time",body)
 	fmt.Fprintf(w, "OK")
 }

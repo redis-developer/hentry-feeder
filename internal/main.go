@@ -14,6 +14,7 @@ func main() {
 	redis.Init()
 
 	fmt.Println("Listening on port :" + config.Load.PORT)
-	http.HandleFunc("/data", server.FormHandler)
+	http.HandleFunc("/timeseries", server.TimeSeriesFormHandler)
+	http.HandleFunc("/snapshot", server.SnapshotFormHandler)
 	http.ListenAndServe(":"+config.Load.PORT, nil)
 }
