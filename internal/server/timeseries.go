@@ -18,8 +18,9 @@ func TimeSeriesFormHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Fprintf(w, "BAD REQUEST")
 		fmt.Println(err)
+		return
 	}
 
-    go redis.Save("time",body)
+	go redis.Save("time", body)
 	fmt.Fprintf(w, "OK")
 }

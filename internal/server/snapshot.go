@@ -18,6 +18,7 @@ func SnapshotFormHandler(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Fprintf(w, "BAD REQUEST")
 		fmt.Println(err)
+		return
 	}
 
 	go redis.Save("snapshot", body)
