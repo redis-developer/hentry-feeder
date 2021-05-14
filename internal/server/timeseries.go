@@ -21,6 +21,6 @@ func TimeSeriesFormHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	go redis.Save("time", body)
+	go redis.Save("entropy", body)
 	fmt.Fprintf(w, "OK")
 }
