@@ -37,5 +37,5 @@ func Save(prefix string, data structure.PostBody) {
 		fmt.Println("Error:", err)
 	}
 
-	fmt.Println(response)
+	fmt.Println(prefix, response)
 }
